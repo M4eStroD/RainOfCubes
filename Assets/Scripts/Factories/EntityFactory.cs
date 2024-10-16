@@ -22,7 +22,7 @@ public class EntityFactory
         _entityPrefab = entityPrefab;
     }
 
-    public Entity Create(Vector3 position, Transform container = null)
+    public void Create(Vector3 position, Transform container = null)
     {
         Entity tempEntity = _objectPool.GetObject();
 
@@ -45,8 +45,6 @@ public class EntityFactory
         
         tempEntity.transform.position = position;
         tempEntity.transform.SetParent(container);
-
-        return tempEntity;
     }
 
     private void PutEntity(Entity entity)
