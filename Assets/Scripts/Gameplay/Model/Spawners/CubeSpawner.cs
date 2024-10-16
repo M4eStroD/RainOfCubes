@@ -8,29 +8,24 @@ public class CubeSpawner : MonoBehaviour
     [SerializeField] private float _offsetY;
     [SerializeField] private float _interval;
 
-    [SerializeField] private int _startCubeCount;
-
     [SerializeField] private Transform _spawnPlane;
     [SerializeField] private Transform _container;
 
-    private CubeFactory _cubeFactory;
+    public EntityFactory СubeFactory { get; private set; }
 
     private void Awake()
     {
-        _cubeFactory = new CubeFactory(_cubePrefab);
+        СubeFactory = new EntityFactory(_cubePrefab);
     }
 
     private void Start()
     {
-        for (int i = 0; i < _startCubeCount; i++)
-            SpawnCube();
-
         StartCoroutine(SpawnTimer());
     }
 
     private void SpawnCube()
     {
-        _cubeFactory.Create(GetRandomPosition(), _container);
+        СubeFactory.Create(GetRandomPosition(), _container);
     }
 
     private IEnumerator SpawnTimer()
