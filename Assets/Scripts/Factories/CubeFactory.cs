@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class CubeFactory : ICubeFactory
+public class CubeFactory
 {
     private readonly ObjectPool<Cube> _objectPoolCube;
     private readonly HashSet<Cube> _cubes;

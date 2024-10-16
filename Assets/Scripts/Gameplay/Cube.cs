@@ -39,9 +39,7 @@ public class Cube : MonoBehaviour
 
     private IEnumerator TimerDead()
     {
-        WaitForSeconds wait = new WaitForSeconds(Random.Range(_maxTimeLife, _maxTimeLife));
-
-        yield return wait;
+        yield return new WaitForSeconds(Random.Range(_minTimeLife, _maxTimeLife));
 
         Destryed?.Invoke(this);
     }
