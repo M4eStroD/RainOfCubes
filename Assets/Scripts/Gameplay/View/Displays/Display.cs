@@ -3,44 +3,25 @@ using UnityEngine.UI;
 
 public class Display : MonoBehaviour
 {
-    [SerializeField] protected SpawnersLogic _spawnersLogic;
+    [SerializeField] private Spawner _spawner;
 
-    [SerializeField] protected Text _countAllTimeText;
-    [SerializeField] protected Text _countCreatedText;
-    [SerializeField] protected Text _countActiveText;
+    [SerializeField] private Text _cuntAllTimeText;
+    [SerializeField] private Text _countCreatedText;
+    [SerializeField] private Text _countActiveText;
 
-    protected virtual void Awake()
+    private void Awake()
     {
-        _countAllTimeText.text = 0.ToString();
+        _cuntAllTimeText.text = 0.ToString();
         _countCreatedText.text = 0.ToString();
         _countActiveText.text = 0.ToString();
+
+        _spawner.InfoChanged += UpdateInfo;
     }
 
-    protected void IncreaseActiveItem()
+    private void UpdateInfo()
     {
-        int.TryParse(_countActiveText.text, out int result);
-
-        _countActiveText.text = (++result).ToString();
-    }
-
-    protected void DecreaseActiveItem()
-    {
-        int.TryParse(_countActiveText.text, out int result);
-
-        _countActiveText.text = (--result).ToString();
-    }
-
-    protected void IncreaseCreatedItem()
-    {
-        int.TryParse(_countCreatedText.text, out int result);
-
-        _countCreatedText.text = (++result).ToString();
-    }
-
-    protected void IncreaseItemAllTime()
-    {
-        int.TryParse(_countAllTimeText.text, out int result);
-
-        _countAllTimeText.text = (++result).ToString();
+        _cuntAllTimeText.text = _spawner.EntityAllTime.ToString();
+        _countCreatedText.text = _spawner.EntityCreated.ToString();
+        _countActiveText.text = _spawner.EntityActive.ToString();
     }
 }

@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 701136754}
   - component: {fileID: 701136757}
   - component: {fileID: 701136756}
-  - component: {fileID: 701136755}
+  - component: {fileID: 701136758}
   m_Layer: 5
   m_Name: CubeInfo
   m_TagString: Untagged
@@ -711,22 +711,6 @@ RectTransform:
   m_AnchoredPosition: {x: -791.7129, y: 320.7583}
   m_SizeDelta: {x: -1583.4259, y: -641.5166}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &701136755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701136753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc5a0de2dfcd472ab04d90ecb0e39950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnersLogic: {fileID: 1399720421}
-  _countAllTimeText: {fileID: 1417290330}
-  _countCreatedText: {fileID: 1186717241}
-  _countActiveText: {fileID: 624733925}
 --- !u!114 &701136756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +749,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701136753}
   m_CullTransparentMesh: 1
+--- !u!114 &701136758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701136753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0c074d88bf40d0824a406ecb138ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 799219988}
+  _cuntAllTimeText: {fileID: 1417290330}
+  _countCreatedText: {fileID: 1186717241}
+  _countActiveText: {fileID: 624733925}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,11 +1153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85750c0240784fa5a6d0e221a5246fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePrefab: {fileID: 969920192061151692, guid: e5132d796bb512a41b6356078ae5b34e, type: 3}
+  _entityPrefab: {fileID: 969920192061151692, guid: e5132d796bb512a41b6356078ae5b34e, type: 3}
+  _container: {fileID: 272226963}
   _offsetY: 30
   _interval: 0.5
   _spawnPlane: {fileID: 883735947}
-  _container: {fileID: 272226963}
 --- !u!4 &799219989
 Transform:
   m_ObjectHideFlags: 0
@@ -1602,8 +1602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b95343004ad443a8a97edea776a8d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bombPrefab: {fileID: 1608022089058491317, guid: 6bf49a5043cc11743b5ffff26dad9ebe, type: 3}
+  _entityPrefab: {fileID: 1608022089058491317, guid: 6bf49a5043cc11743b5ffff26dad9ebe, type: 3}
   _container: {fileID: 1138200687}
+  _cubeSpawner: {fileID: 799219988}
 --- !u!4 &1179238519
 Transform:
   m_ObjectHideFlags: 0
@@ -1896,52 +1897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73848e0516624593bb51d98f423a003e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1399720420
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1399720422}
-  - component: {fileID: 1399720421}
-  m_Layer: 0
-  m_Name: SpawnerLogic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1399720421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399720420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20297c7dac3944c6bf52a92986ebc146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bombSpawner: {fileID: 1179238518}
-  _cubeSpawner: {fileID: 799219988}
---- !u!4 &1399720422
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399720420}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1417290328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2181,7 @@ GameObject:
   - component: {fileID: 1778848753}
   - component: {fileID: 1778848756}
   - component: {fileID: 1778848755}
-  - component: {fileID: 1778848754}
+  - component: {fileID: 1778848757}
   m_Layer: 5
   m_Name: BombInfo
   m_TagString: Untagged
@@ -2260,22 +2215,6 @@ RectTransform:
   m_AnchoredPosition: {x: 791.71, y: 320.7583}
   m_SizeDelta: {x: -1583.4259, y: -641.5166}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1778848754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778848752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043baee666574802943b6b452bb3b41c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnersLogic: {fileID: 1399720421}
-  _countAllTimeText: {fileID: 1746205721}
-  _countCreatedText: {fileID: 1221360078}
-  _countActiveText: {fileID: 1721680385}
 --- !u!114 &1778848755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2314,6 +2253,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778848752}
   m_CullTransparentMesh: 1
+--- !u!114 &1778848757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778848752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0c074d88bf40d0824a406ecb138ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 1179238518}
+  _cuntAllTimeText: {fileID: 1746205721}
+  _countCreatedText: {fileID: 1221360078}
+  _countActiveText: {fileID: 1721680385}
 --- !u!1 &1878782548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,6 +2578,5 @@ SceneRoots:
   - {fileID: 1750034529}
   - {fileID: 799219989}
   - {fileID: 1179238519}
-  - {fileID: 1399720422}
   - {fileID: 749199605}
   - {fileID: 1878782552}

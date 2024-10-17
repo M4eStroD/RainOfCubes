@@ -42,6 +42,6 @@ public class Bomb : Entity
 
         _exploder.Explode(transform);
         
-        EntityDestroy();
+        OnDestroy();
     }
 }

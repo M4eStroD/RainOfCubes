@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour
         yield return new WaitForSeconds(GetRandomTimeLife());
     }
 
-    protected void EntityDestroy()
+    protected void OnDestroy()
     {
         Destryed?.Invoke(this);
     }

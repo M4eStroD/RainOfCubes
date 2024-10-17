@@ -32,6 +32,6 @@ public class Cube : Entity
     {
         yield return base.TimerDead();
         
-        EntityDestroy();
+        OnDestroy();
     }
 }

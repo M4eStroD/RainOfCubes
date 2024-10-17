@@ -1,20 +1,13 @@
 ﻿using UnityEngine;
 
-public class BombSpawner : MonoBehaviour
+public class BombSpawner : Spawner
 {
-    [SerializeField] private Bomb _bombPrefab;
-
-    [SerializeField] private Transform _container;
-
-    public EntityFactory BombFactory { get; private set; }
-
-    private void Awake()
+    [SerializeField] private CubeSpawner _cubeSpawner;
+    
+    protected override void Awake()
     {
-        BombFactory = new EntityFactory(_bombPrefab);
-    }
+        base.Awake();
 
-    public void Spawn(Vector3 position)
-    {
-        BombFactory.Create(position, _container);
+        _cubeSpawner.CubeRemoved += cube => Spawn(cube.transform.position);
     }
 }

@@ -1,31 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class CubeSpawner : MonoBehaviour
+public class CubeSpawner : Spawner
 {
-    [SerializeField] private Cube _cubePrefab;
-
     [SerializeField] private float _offsetY;
     [SerializeField] private float _interval;
 
     [SerializeField] private Transform _spawnPlane;
-    [SerializeField] private Transform _container;
+    
+    public event Action<Entity> CubeRemoved;
 
-    public EntityFactory СubeFactory { get; private set; }
-
-    private void Awake()
+    protected override void Awake()
     {
-        СubeFactory = new EntityFactory(_cubePrefab);
+        base.Awake();
+
+        EntityFactory.EntityRemoved += cube => CubeRemoved?.Invoke(cube);
     }
 
     private void Start()
     {
         StartCoroutine(SpawnTimer());
-    }
-
-    private void SpawnCube()
-    {
-        СubeFactory.Create(GetRandomPosition(), _container);
     }
 
     private IEnumerator SpawnTimer()
@@ -34,7 +30,7 @@ public class CubeSpawner : MonoBehaviour
 
         while (true)
         {
-            SpawnCube();
+            Spawn(GetRandomPosition());
             yield return wait;
         }
     }
