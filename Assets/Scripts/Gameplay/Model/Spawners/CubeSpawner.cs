@@ -16,12 +16,17 @@ public class CubeSpawner : Spawner
     {
         base.Awake();
 
-        EntityFactory.EntityRemoved += cube => CubeRemoved?.Invoke(cube);
+        EntityFactory.EntityRemoved += OnCubeRemoved;
     }
 
     private void Start()
     {
         StartCoroutine(SpawnTimer());
+    }
+
+    private void OnCubeRemoved(Entity entity)
+    {
+        CubeRemoved?.Invoke(entity);
     }
 
     private IEnumerator SpawnTimer()

@@ -19,19 +19,27 @@ public class Spawner : MonoBehaviour
     {
         EntityFactory = new EntityFactory(_entityPrefab);
 
-        EntityFactory.EntityAdded += IncreaseActiveEntity;
-        EntityFactory.EntityAdded += IncreaseCreatedItem;
-        EntityFactory.EntityAdded += IncreaseItemAllTime;
-        
-        EntityFactory.EntitySpawned += IncreaseItemAllTime;
-        EntityFactory.EntitySpawned += IncreaseActiveEntity;
-
+        EntityFactory.EntityAdded += IncreaseAll;
+        EntityFactory.EntitySpawned += IncreaseSpawnInfo;
         EntityFactory.EntityRemoved += (entity) => DecreaseActiveItem();
     }
 
     protected void Spawn(Vector3 position)
     {
         EntityFactory.Create(position, _container);
+    }
+
+    private void IncreaseAll()
+    {
+        IncreaseActiveEntity();
+        IncreaseCreatedItem();
+        IncreaseItemAllTime();
+    }
+
+    private void IncreaseSpawnInfo()
+    {
+        IncreaseItemAllTime();
+        IncreaseActiveEntity();
     }
     
     private void IncreaseActiveEntity()

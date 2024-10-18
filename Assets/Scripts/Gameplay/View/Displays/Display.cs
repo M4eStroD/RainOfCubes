@@ -14,8 +14,16 @@ public class Display : MonoBehaviour
         _cuntAllTimeText.text = 0.ToString();
         _countCreatedText.text = 0.ToString();
         _countActiveText.text = 0.ToString();
+    }
 
+    private void OnEnable()
+    {
         _spawner.InfoChanged += UpdateInfo;
+    }
+
+    private void OnDisable()
+    {
+        _spawner.InfoChanged -= UpdateInfo;
     }
 
     private void UpdateInfo()
